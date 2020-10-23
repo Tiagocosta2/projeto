@@ -70,6 +70,14 @@ Route::get('/tarefas', function () {
 		'tarefas'=>$tarefas
 	]);
 });
-Route::get('/', 'App\Http\Controllers\PortalController@index');
-Route::get('/listar-equipas', 'App\Http\Controllers\PortalController@listarEquipas');
-Route::get('/listar-equipas/{chave}', 'App\Http\Controllers\PortalController@listarEquipa');
+Route::get('/', 'App\Http\Controllers\PortalController@index')
+			->name('equipas.index');		
+Route::get('/listar-equipas', 'App\Http\Controllers\PortalController@listarEquipas')
+			->name('equipas.lista');
+Route::get('/listar-equipas/{chave}', 'App\Http\Controllers\PortalController@listarEquipa')
+			->name('equipa.lista');
+Route::get('/listar-equipas/{chave?}/{chave2}', 'App\Http\Controllers\PortalController@listarEquipas');
+Route::get('/contacto', 'App\Http\Controllers\PortalController@mostrarForm')
+			->name('mostrar.form');	
+Route::post('/contacto', 'App\Http\Controllers\PortalController@processarForm')
+			->name('processar.form');
